@@ -12,12 +12,12 @@ RUN find /etc/systemd/system \
     -exec rm \{} \;
 
 RUN apt-get update && \
-    apt-get install -y \
-    dbus && \
+    apt-get install dbus openssh-server -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN systemctl set-default multi-user.target
+RUN systemctl enable ssh
 
 COPY setup /sbin/
 

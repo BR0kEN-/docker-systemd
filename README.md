@@ -1,12 +1,4 @@
-# PROJECT UNMAINTAINED
-
-**This image is no longer used nor maintained by its original developer. If you
-want to continue its development, you may fork the project in accordance with
-[its license](LICENSE).**
-
--------------------------------------------------------------------------------
-
-# solita/ubuntu-systemd
+# br0ken/ubuntu-systemd
 
 A Docker image based on `ubuntu` that runs `systemd` with a minimal set of
 services.
@@ -14,17 +6,12 @@ services.
 **This image is meant for development use only. We strongly recommend against
 running it in production!**
 
-## Supported tags
-
-* `18.04`, `bionic`
-* `16.04`, `xenial`, `latest`
-
 ## But why?
 
-The short answer: use `solita/ubuntu-systemd` for running applications that
+The short answer: use `br0ken/ubuntu-systemd` for running applications that
 need to be run in a full Ubuntu system and not on their own as PID 1.
 
-The long answer: `solita/ubuntu-systemd` might be a better choice than the
+The long answer: `br0ken/ubuntu-systemd` might be a better choice than the
 stock `ubuntu` image if one of the following is true:
 
 - You want to test a provisioning or deployment script that configures and
@@ -44,7 +31,7 @@ set up your Docker host. It uses [special privileges](https://docs.docker.com/en
 to create a cgroup hierarchy for `systemd`. We do this in a separate setup
 step so we can run `systemd` in unprivileged containers.
 
-    docker run --rm --privileged -v /:/host solita/ubuntu-systemd setup
+    docker run --rm --privileged -v /:/host br0ken/ubuntu-systemd setup
 
 ## Running
 
@@ -77,7 +64,7 @@ This image is useless as it's only meant to serve as a base for your own
 images, but you can still create a container from it. First set up your Docker
 host as described in Setup above. Then run the following command:
 
-    docker run -d --name systemd --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t solita/ubuntu-systemd
+    docker run -d --name systemd --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t br0ken/ubuntu-systemd
 
 Check the logs to see if `systemd` started correctly:
 
